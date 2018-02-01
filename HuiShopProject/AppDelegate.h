@@ -14,6 +14,7 @@
 @property (strong, nonatomic) FMTabBar *tab;
 @property (strong, nonatomic) UIWindow *window;
 @property (copy, nonatomic) NSString *clientId;
+@property (assign, nonatomic) BOOL isInBackGround;//app是否在后台
 -(void)bindClientId;
 - (void)goToRoot:(int)index;
 -(void)getUserInfo;

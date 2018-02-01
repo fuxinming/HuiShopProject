@@ -2801,7 +2801,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Anhui Yunju Network Technology Co., Ltd (QML2HL7B4N)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anhui Yunju Network Technology Co., Ltd (QML2HL7B4N)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QML2HL7B4N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuiShopProject/EXT/Alipay/Alipay2.0",
@@ -2828,8 +2828,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yunju.com.huiqitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "07ebd02f-ccde-4c25-b497-9d3a9ad38625";
-				PROVISIONING_PROFILE_SPECIFIER = tuisongDis;
+				PROVISIONING_PROFILE = "103ec98c-a019-4841-a82a-884ded610dbb";
+				PROVISIONING_PROFILE_SPECIFIER = hqtproductionTestAdHoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2843,7 +2843,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Anhui Yunju Network Technology Co., Ltd (QML2HL7B4N)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Anhui Yunju Network Technology Co., Ltd (QML2HL7B4N)";
 				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = QML2HL7B4N;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HuiShopProject/EXT/Alipay/Alipay2.0",
@@ -2870,8 +2870,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yunju.com.huiqitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "07ebd02f-ccde-4c25-b497-9d3a9ad38625";
-				PROVISIONING_PROFILE_SPECIFIER = tuisongDis;
+				PROVISIONING_PROFILE = "103ec98c-a019-4841-a82a-884ded610dbb";
+				PROVISIONING_PROFILE_SPECIFIER = hqtproductionTestAdHoc;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

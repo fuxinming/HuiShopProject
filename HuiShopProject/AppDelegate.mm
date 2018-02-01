@@ -33,6 +33,7 @@ BMKMapManager* _mapManager;
 	[WXApi registerApp:APP_ID];
     [self doLogin];
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+	self.isInBackGround = NO;
     return YES;
 }
 
@@ -44,8 +45,7 @@ BMKMapManager* _mapManager;
 
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    self.isInBackGround = YES;
 }
 
 
@@ -82,7 +82,9 @@ BMKMapManager* _mapManager;
     if (@available(iOS 10.0, *)) {
         completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
     } else {
-        // Fallback on earlier versions
+		[AppUtil showAlert:@"提示" msg:notification.request.content.body handle:^(BOOL cancelled, NSInteger buttonIndex) {
+			
+		}];
     }
 }
 
@@ -101,7 +103,13 @@ BMKMapManager* _mapManager;
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
     // 处理APNs代码，通过userInfo可以取到推送的信息（包括内容，角标，自定义参数等）。如果需要弹窗等其他操作，则需要自行编码。
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
-    
+	
+    if(!self.isInBackGround) {
+		[AppUtil showAlert:@"提示" msg:StrRelay(userInfo[@"aps"][@"alert"][@"body"]) handle:^(BOOL cancelled, NSInteger buttonIndex) {
+		
+		}];
+		
+	}
     //静默推送收到消息后也需要将APNs信息传给个推统计
     [GeTuiSdk handleRemoteNotification:userInfo];
     
@@ -110,7 +118,24 @@ BMKMapManager* _mapManager;
 
 #endif
 
-
+/** SDK收到透传消息回调 */
+- (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
+	
+	// 收到个推消息
+	NSString *payloadMsg = nil;
+	if (payloadData) {
+		
+		payloadMsg = [[NSString alloc] initWithBytes:payloadData.bytes
+											  length:payloadData.length
+											encoding:NSUTF8StringEncoding];
+	}
+	
+	if (!self.isInBackGround) {
+		[AppUtil showAlert:@"提示" msg:payloadMsg handle:^(BOOL cancelled, NSInteger buttonIndex) {
+			
+		}];
+	}
+}
 - (void)goToRoot:(int)index {
     if([CommonUtil strNilOrEmpty:[[NSUserDefaults standardUserDefaults] objectForKey:@"GoToClient"]]){
         CXOpenIndexViewController *index = [[CXOpenIndexViewController alloc] init];
@@ -258,17 +283,4 @@ UIRemoteNotificationTypeBadge);
 	}
 }
 
-
-
-/** SDK收到透传消息回调 */
-- (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
-    //收到个推消息
-    NSString *payloadMsg = nil;
-    if (payloadData) {
-        payloadMsg = [[NSString alloc] initWithBytes:payloadData.bytes length:payloadData.length encoding:NSUTF8StringEncoding];
-    }
-    
-    NSString *msg = [NSString stringWithFormat:@"taskId=%@,messageId:%@,payloadMsg:%@%@",taskId,msgId, payloadMsg,offLine ? @"<离线消息>" : @""];
-    NSLog(@"\n>>>[GexinSdk ReceivePayload]:%@\n\n", msg);
-}
 @end
