@@ -1,0 +1,6 @@
+framework module Pods_HuiShopProject {
+  umbrella header "Pods-HuiShopProject-umbrella.h"
+
+  export *
+  module * { export * }
+}
