@@ -33,6 +33,7 @@
 
 //接口名称：快速注册 mobile pin password
 #define Api_QuickReg @"/app/buyer/reg.do"
+#define Api_resetpw @"/app/buyer/resetpw.do"
 //接口名称：登录 user_name password
 #define Api_BuyerLogin @"/app/buyer/login.do"
 #define Api_Buyer_getuser @"/app/buyer/getuser.do"

@@ -39,8 +39,7 @@ BMKMapManager* _mapManager;
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+	
 }
 
 
@@ -55,7 +54,7 @@ BMKMapManager* _mapManager;
 
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    self.isInBackGround = NO;
 }
 
 /** 远程通知注册成功委托 */
@@ -77,15 +76,9 @@ BMKMapManager* _mapManager;
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     
     NSLog(@"willPresentNotification：%@", notification.request.content.userInfo);
-    
-    // 根据APP需要，判断是否要提示用户Badge、Sound、Alert
-    if (@available(iOS 10.0, *)) {
-        completionHandler(UNNotificationPresentationOptionBadge | UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert);
-    } else {
-		[AppUtil showAlert:@"提示" msg:notification.request.content.body handle:^(BOOL cancelled, NSInteger buttonIndex) {
-			
-		}];
-    }
+	[AppUtil showAlert:@"提示" msg:notification.request.content.body handle:^(BOOL cancelled, NSInteger buttonIndex) {
+		
+	}];
 }
 
 //  iOS 10: 点击通知进入App时触发，在该方法内统计有效用户点击数
@@ -98,25 +91,27 @@ BMKMapManager* _mapManager;
     
     completionHandler();
 }
+#endif
 
 /** APP已经接收到“远程”通知(推送) - 透传推送消息  */
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
     // 处理APNs代码，通过userInfo可以取到推送的信息（包括内容，角标，自定义参数等）。如果需要弹窗等其他操作，则需要自行编码。
+
     NSLog(@"\n>>>[Receive RemoteNotification - Background Fetch]:%@\n\n",userInfo);
 	
-    if(!self.isInBackGround) {
-		[AppUtil showAlert:@"提示" msg:StrRelay(userInfo[@"aps"][@"alert"][@"body"]) handle:^(BOOL cancelled, NSInteger buttonIndex) {
-		
-		}];
-		
-	}
+//    if(!self.isInBackGround) {
+//		NSString *str = StrRelay(userInfo[@"aps"][@"alert"][@"body"][@"obj"][@"msg"]);
+//		if (!ISEmptyStr(str)) {
+//			[AppUtil showAlert:@"提示" msg:str handle:^(BOOL cancelled, NSInteger buttonIndex) {
+//
+//			}];
+//		}
+//	}
     //静默推送收到消息后也需要将APNs信息传给个推统计
     [GeTuiSdk handleRemoteNotification:userInfo];
     
     completionHandler(UIBackgroundFetchResultNewData);
 }
-
-#endif
 
 /** SDK收到透传消息回调 */
 - (void)GeTuiSdkDidReceivePayloadData:(NSData *)payloadData andTaskId:(NSString *)taskId andMsgId:(NSString *)msgId andOffLine:(BOOL)offLine fromGtAppId:(NSString *)appId {
@@ -129,12 +124,9 @@ BMKMapManager* _mapManager;
 											  length:payloadData.length
 											encoding:NSUTF8StringEncoding];
 	}
-	
-	if (!self.isInBackGround) {
-		[AppUtil showAlert:@"提示" msg:payloadMsg handle:^(BOOL cancelled, NSInteger buttonIndex) {
-			
-		}];
-	}
+	[AppUtil showAlert:@"提示" msg:payloadMsg handle:^(BOOL cancelled, NSInteger buttonIndex) {
+		
+	}];
 }
 - (void)goToRoot:(int)index {
     if([CommonUtil strNilOrEmpty:[[NSUserDefaults standardUserDefaults] objectForKey:@"GoToClient"]]){
@@ -178,7 +170,6 @@ BMKMapManager* _mapManager;
     }else{
         [AppUtil loginWith:phone andPass:pwd complete:^{
             LLog(@"appdelegate 登录成功——————————");
-            [bself bindClientId];
         } andFail:^(id josn) {
             UserDefaultRemoveObjectForKey(LoginPhone);
             UserDefaultRemoveObjectForKey(LoginPwd);
@@ -202,7 +193,9 @@ BMKMapManager* _mapManager;
     NSMutableDictionary *param = [AppUtil getPublicParam];
     [param setObject:self.clientId forKey:@"CID"];
     [NSObject getDataWithHost:Server_Host Path:Api_cid_bind Param:param isCache:NO success:^(id json) {
-		
+//		[AppUtil showAlert:self.clientId msg:@"CID绑定成功" handle:^(BOOL cancelled, NSInteger buttonIndex) {
+//
+//		}];
     } fail:^(id json) {
         
     }];
@@ -279,7 +272,7 @@ UIRemoteNotificationTypeBadge);
     NSLog(@"\n>>>[GeTuiSdk RegisterClient]:%@\n\n", clientId);
     self.clientId = clientId;
 	if(IsLogin){
-		[self bindClientId];
+		[self doLogin];
 	}
 }
 

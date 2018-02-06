@@ -99,7 +99,7 @@
     [param setObject:StrRelay(self.code) forKey:@"pin"];
     [param setObject:StrRelay(itemSec.value) forKey:@"password"];
     [self showLoading];
-    [NSObject postDataWithHost:Server_Host Path:Api_QuickReg Param:param isCache:NO success:^(id json) {
+    [NSObject postDataWithHost:Server_Host Path:Api_resetpw Param:param isCache:NO success:^(id json) {
         [bself hiddenLoading];
         if (IntRelay(json[@"state"]) == 1) {
             [bself popToViewController:@"LoginViewController"];

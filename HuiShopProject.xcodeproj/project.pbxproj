@@ -2828,8 +2828,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yunju.com.huiqitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "103ec98c-a019-4841-a82a-884ded610dbb";
-				PROVISIONING_PROFILE_SPECIFIER = hqtproductionTestAdHoc;
+				PROVISIONING_PROFILE = "f6c02def-d2b9-4bfd-9cbd-75fb79ed72f0";
+				PROVISIONING_PROFILE_SPECIFIER = hqtDis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -2870,8 +2870,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = yunju.com.huiqitian;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "103ec98c-a019-4841-a82a-884ded610dbb";
-				PROVISIONING_PROFILE_SPECIFIER = hqtproductionTestAdHoc;
+				PROVISIONING_PROFILE = "f6c02def-d2b9-4bfd-9cbd-75fb79ed72f0";
+				PROVISIONING_PROFILE_SPECIFIER = hqtDis;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
