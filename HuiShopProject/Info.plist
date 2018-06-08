@@ -42,7 +42,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>2</string>
+	<string>3</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wechat</string>
@@ -149,11 +149,11 @@
 		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
-	<string>相机权限</string>
+	<string>惠七天需要使用你的相机</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>位置信息</string>
+	<string>惠七天需要使用你的地理位置，为你推荐附近惠七天超市，以便于你能更快捷的从附近的惠七天超市购物</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>相册权限</string>
+	<string>惠七天需要访问你的相册</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

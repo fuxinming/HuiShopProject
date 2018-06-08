@@ -48,7 +48,6 @@
 		5F45F7861FC677C80037A7A0 /* CumShopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45F7851FC677C80037A7A0 /* CumShopViewController.m */; };
 		5F45F7891FC677E20037A7A0 /* ImportProductViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45F7881FC677E20037A7A0 /* ImportProductViewController.m */; };
 		5F45F78F1FC678060037A7A0 /* DaySignViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F45F78E1FC678060037A7A0 /* DaySignViewController.m */; };
-		5F4778A51FC284F100E3F22B /* TestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4778A31FC284F100E3F22B /* TestViewController.m */; };
 		5F4778A81FC285C700E3F22B /* ProductSearchListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4778A71FC285C700E3F22B /* ProductSearchListViewController.m */; };
 		5F4778AC1FC2BBB500E3F22B /* ConditionSiftBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F4778AB1FC2BBB500E3F22B /* ConditionSiftBar.m */; };
 		5F51FFF91FFCA5BA00F21447 /* AddressDetailInfoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5F51FFF51FFCA5BA00F21447 /* AddressDetailInfoCell.m */; };
@@ -326,8 +325,6 @@
 		5F45F7881FC677E20037A7A0 /* ImportProductViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ImportProductViewController.m; sourceTree = "<group>"; };
 		5F45F78D1FC678060037A7A0 /* DaySignViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DaySignViewController.h; sourceTree = "<group>"; };
 		5F45F78E1FC678060037A7A0 /* DaySignViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DaySignViewController.m; sourceTree = "<group>"; };
-		5F4778A31FC284F100E3F22B /* TestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestViewController.m; sourceTree = "<group>"; };
-		5F4778A41FC284F100E3F22B /* TestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestViewController.h; sourceTree = "<group>"; };
 		5F4778A61FC285C700E3F22B /* ProductSearchListViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ProductSearchListViewController.h; sourceTree = "<group>"; };
 		5F4778A71FC285C700E3F22B /* ProductSearchListViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ProductSearchListViewController.m; sourceTree = "<group>"; };
 		5F4778AA1FC2BBB400E3F22B /* ConditionSiftBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConditionSiftBar.h; sourceTree = "<group>"; };
@@ -1460,8 +1457,6 @@
 				5F807CD21FAB132B003F0012 /* Views */,
 				5F807C9C1FAB12AB003F0012 /* AppDelegate.h */,
 				5F807C9D1FAB12AB003F0012 /* AppDelegate.mm */,
-				5F4778A41FC284F100E3F22B /* TestViewController.h */,
-				5F4778A31FC284F100E3F22B /* TestViewController.m */,
 				D7E71FA31FAB52BF0045ECA3 /* LaunchScreen.storyboard */,
 				5F807CA51FAB12AB003F0012 /* Assets.xcassets */,
 				5F807CAA1FAB12AB003F0012 /* Info.plist */,
@@ -2580,7 +2575,6 @@
 				5FE88C701FBAEDE800ED07D8 /* WJScrollView.m in Sources */,
 				5F65EE0A1FE3C77F0089CFDC /* TZGifPhotoPreviewController.m in Sources */,
 				5F65EE061FE3C77F0089CFDC /* TZPhotoPickerController.m in Sources */,
-				5F4778A51FC284F100E3F22B /* TestViewController.m in Sources */,
 				D7E71FAE1FAB55D90045ECA3 /* MainViewController.m in Sources */,
 				5F8BC24F1FF23F7600E0B752 /* DataVerifier.m in Sources */,
 				5FF05FBE2010A025006F7F84 /* LuckyRecordViewController.m in Sources */,
